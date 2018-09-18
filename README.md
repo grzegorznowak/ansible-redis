@@ -68,6 +68,21 @@ Currently the role installs whatever latest stable version lives in supported di
             bind: 127.0.0.1
       roles:
         - role: ansible-redis
+        
+##### when from ansible-galaxy
+
+    ---
+    - hosts: all
+      vars:
+        redis_configs:
+          - port: 6379,
+            name: "cache0"
+            bind: 127.0.0.1
+          - port: 6380,
+            name: "cache1"
+            bind: 127.0.0.1
+      roles:
+        - role: grzegorznowak.ansible-redis        
 
 ## Testing
 
