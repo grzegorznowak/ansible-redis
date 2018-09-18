@@ -1,0 +1,22 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    is_docker: true
+    redis_configs:
+      - port: 6379,
+        name: "cache0"
+        bind: 127.0.0.1
+      - port: 6380,
+        name: "cache1"
+        bind: 127.0.0.1
+  pre_tasks:
+    - name: install some helpful debugging tools
+      apt: pkg={{ item }} state=installed install_recommends=no
+      with_items:
+        - net-tools
+        - less
+        - nano
+
+  roles:
+    - role: ansible-redis

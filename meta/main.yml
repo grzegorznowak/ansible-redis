@@ -1,0 +1,21 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: grzegorznowak
+  description: Redis multiconf for Ubuntu. Molecule covered. Also builds for vanilla docker machines.
+  company: "Spottmedia Ltd."
+  license: "WTFPL"
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 16.04
+        - 18.04
+    - name: Debian
+      versions:
+        - buster
+        - stretch
+  galaxy_tags:
+    - redis
+    - cache

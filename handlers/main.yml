@@ -1,0 +1,6 @@
+---
+- name: Stop the default redis server
+  service: name=redis-server state=stopped
+
+- name: Disable the default redis service file
+  service: name=redis-server enabled=false

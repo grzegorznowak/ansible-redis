@@ -1,0 +1,11 @@
+---
+- name: Make sure Redis is installed.
+  apt:
+    name: "{{ redis_package_name }}"
+  state: present
+  notify:
+    - Stop the default redis server
+    - Disable the default redis service file
+
+- name: Flush Handlers.
+  meta: flush_handlers

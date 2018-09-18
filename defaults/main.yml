@@ -1,0 +1,6 @@
+---
+redis_package_name: "redis-server"
+redis_configs:
+  - port: 6380,
+    name: "cache"
+    bind: 127.0.0.1
