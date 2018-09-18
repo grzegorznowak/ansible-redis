@@ -1,4 +1,4 @@
-# Ansible Redis role
+# Ansible Role: Redis
 
 
 Installs [Redis Server](https://redis.io/) on Debian.
