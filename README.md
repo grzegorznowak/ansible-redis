@@ -82,7 +82,7 @@ Currently the role installs whatever latest stable version lives in supported di
             name: "cache1"
             bind: 127.0.0.1
       roles:
-        - role: grzegorznowak.ansible-redis        
+        - role: grzegorznowak.redis        
 
 ## Testing
 
