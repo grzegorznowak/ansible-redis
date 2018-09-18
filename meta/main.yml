@@ -6,6 +6,7 @@ galaxy_info:
   description: Redis multiconf for Ubuntu. Molecule covered. Also builds for vanilla docker machines.
   company: "Spottmedia Ltd."
   license: "WTFPL"
+  role_name: redis
   min_ansible_version: 2.4
   platforms:
     - name: Ubuntu
