@@ -12,6 +12,8 @@ logging points for each config defined.
 The role is perfect for dev purposes to test multiple configurations on a single machine, as well as for live deployments
 with it's minimalistic fully-molecule-covered and linted code.  
 
+Leverages `systemctl` on lxd/baremetal and simple `init.d` on docker. 
+
 ## Requirements
 
 No dependencies.
@@ -82,7 +84,7 @@ Currently the role installs whatever latest stable version lives in supported di
             name: "cache1"
             bind: 127.0.0.1
       roles:
-        - role: grzegorznowak.ansible-redis        
+        - role: grzegorznowak.redis        
 
 ## Testing
 
