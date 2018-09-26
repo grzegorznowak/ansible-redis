@@ -91,8 +91,8 @@ Currently the role installs whatever latest stable version lives in supported di
 ### Requirements
 
 * https://molecule.readthedocs.io/en/latest/installation.html
-* [specific molecule LXD install doc](molecule/default/tests/INSTALL.rst)
-* [specific molecule docker install doc](molecule/docker_dev/tests/INSTALL.rst)
+* [specific molecule LXD install doc](molecule/default/INSTALL.rst)
+* [specific molecule docker install doc](molecule/docker_dev/INSTALL.rst)
 
 
 
