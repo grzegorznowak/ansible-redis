@@ -11,12 +11,23 @@
         name: "cache1"
         bind: 127.0.0.1
   pre_tasks:
-    - name: install some helpful debugging tools
-      apt: pkg={{ item }} state=installed install_recommends=no
+    - name: Install helper libraries for testing - Debian
+      apt:
+        update_cache: true
+        cache_valid_time: 60
+        name: '{{ item }}'
+        state: present
       with_items:
-        - net-tools
-        - less
-        - nano
+        - telnet
+      when: ansible_os_family == "Debian"
+    - name: Install helper libraries for testing - Redhat
+      yum:
+        update_cache: true
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - telnet
+      when: ansible_os_family == "RedHat"
 
   roles:
     - role: ansible-redis

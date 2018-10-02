@@ -8,6 +8,9 @@
 - name: Copy init.d file template
   template: src=init.j2 dest=/etc/init.d/redis-{{ redis_name }} mode="u=rwx,g=rx,o=rx"
 
+- name: Create the lib folder for the instance
+  file: path=/var/lib/redis_{{ redis_name }} state=directory owner=redis group=redis mode="g+rw,u+rw,o-rwx"
+
 - name: Enable the custom redis service
   service: name=redis-{{ redis_name }}.service enabled=true
   when: is_docker is not defined

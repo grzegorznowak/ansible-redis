@@ -9,5 +9,25 @@
       - port: 6380,
         name: "cache1"
         bind: 127.0.0.1
+
+  pre_tasks:
+    - name: Install helper libraries for testing - Debian
+      apt:
+        update_cache: true
+        cache_valid_time: 60
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - telnet
+      when: ansible_os_family == "Debian"
+
+    - name: Install helper libraries for testing - RedHat
+      yum:
+        update_cache: true
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - telnet
+      when: ansible_os_family == "RedHat"
   roles:
     - role: ansible-redis
