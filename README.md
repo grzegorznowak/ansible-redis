@@ -1,4 +1,4 @@
-#### Build Status [![Build Status](https://build.spottmedia.com/buildStatus/icon?job=ansible_role_redis)](https://build.spottmedia.com/job/ansible_role_redis)
+[![Build Status](https://build.spottmedia.com/buildStatus/icon?job=ansible_role_redis)](https://build.spottmedia.com/job/ansible_role_redis)
 
 # Ansible Role: Redis
 
