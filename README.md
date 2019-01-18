@@ -1,5 +1,6 @@
-# Ansible Role: Redis
+[![Build Status](https://build.spottmedia.com/buildStatus/icon?job=ansible_role_redis)](https://build.spottmedia.com/job/ansible_role_redis)
 
+# Ansible Role: Redis
 
 Installs [Redis Server](https://redis.io/) on Debian.
 
