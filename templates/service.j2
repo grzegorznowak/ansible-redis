@@ -13,6 +13,7 @@ User=redis
 Group=redis
 RuntimeDirectory=redis
 RuntimeDirectoryMode=2755
+LimitNOFILE=65536
 
 # ExecStartPre=-/bin/run-parts --verbose /etc/redis/redis-server.pre-up.d
 # ExecStartPost=-/bin/run-parts --verbose /etc/redis/redis-server.post-up.d
