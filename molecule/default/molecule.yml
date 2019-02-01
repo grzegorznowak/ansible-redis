@@ -10,8 +10,9 @@ platforms:
     image: ubuntu/bionic/amd64
   - name: ansible-redis-instance-16-04
     image: ubuntu/xenial/amd64
-  - name: ansible-redis-instance-buster
-    image: debian/buster/amd64
+ # dont support buster for now - it has issues starting the redis service via systemd
+ # - name: ansible-redis-instance-buster
+ #   image: debian/buster/amd64
   - name: ansible-redis-instance-stretch
     image: debian/stretch/amd64
 provisioner:

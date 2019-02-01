@@ -23,8 +23,9 @@ No dependencies.
 
 Currently builds and integrates on latest debian-based distros:
 
-##### Ubuntu: 18.04, 16.04
-##### Debian: buster, stretch
+Ubuntu: 18.04, 16.04
+
+Debian: stretch
 
  
 
