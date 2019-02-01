@@ -1,5 +1,7 @@
 extends: default
 
+ignore: |
+   pyenv
 rules:
   braces:
     max-spaces-inside: 1
