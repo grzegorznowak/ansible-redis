@@ -10,6 +10,11 @@
 
 - name: Create the lib folder for the instance
   file: path=/var/lib/redis_{{ redis_name }} state=directory owner=redis group=redis mode="g+rw,u+rw,o-rwx"
+  notify:
+    - Reload daemon
+
+- name: Flush Handlers.
+  meta: flush_handlers
 
 - name: Enable the custom redis service
   service: name=redis-{{ redis_name }}.service enabled=true

@@ -4,3 +4,7 @@
 
 - name: Disable the default redis service file
   service: name=redis-server enabled=false
+
+- name: Reload daemon
+  systemd:
+    daemon_reload: true
