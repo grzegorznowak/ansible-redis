@@ -5,6 +5,7 @@
     state: present
     update_cache: true
     cache_valid_time: 60
+    policy_rc_d: 101  # do not automatically start the default redis-server upon the installation, will crash otherwise
   notify:
     - Stop the default redis server
     - Disable the default redis service file
