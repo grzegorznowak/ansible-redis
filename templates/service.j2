@@ -6,7 +6,7 @@ Documentation=http://redis.io/documentation, man:redis-server(1)
 [Service]
 Type=forking
 ExecStart=/usr/bin/redis-server /etc/redis/redis-{{ redis_name }}.conf
-PIDFile=/var/run/redis/redis-{{ redis_name }}.pid
+# PIDFile=/var/run/redis/redis-{{ redis_name }}.pid  - does this need a privileged container maybe, gotta check!
 TimeoutStopSec=0
 Restart=always
 User=redis
