@@ -19,7 +19,7 @@ NAME=redis-{{ redis_name }}
 DESC=redis-{{ redis_name }}
 
 RUNDIR=/var/run/redis
-PIDFILE=$RUNDIR/edis-{{ redis_name }}.pid
+PIDFILE=$RUNDIR/redis-{{ redis_name }}.pid
 
 test -x $DAEMON || exit 0
 
