@@ -139,9 +139,15 @@ databases 16
 #   It is also possible to remove all the previously configured save
 #   points by adding a save directive with a single empty string argument
 #   like in the following example:
+{% if redis_disable_disk_store is defined and redis_disable_disk_store %}
+# save 900 1
+# save 300 10
+# save 60 10000
+{% else %}
 save 900 1
 save 300 10
 save 60 10000
+{% endif %}
 
 # By default Redis will stop accepting writes if RDB snapshots are enabled
 # (at least one save point) and the latest background save failed.
