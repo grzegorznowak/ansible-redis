@@ -5,8 +5,8 @@ Documentation=http://redis.io/documentation, man:redis-server(1)
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/redis-server /etc/redis/redis-{{ redis_name }}.conf
-# PIDFile=/var/run/redis/redis-{{ redis_name }}.pid  - does this need a privileged container maybe, gotta check!
+ExecStart=/usr/bin/redis-server /etc/redis/redis-{{ item.name }}.conf
+# PIDFile=/var/run/redis/redis-{{ item.name }}.pid  - does this need a privileged container maybe, gotta check!
 TimeoutStopSec=0
 Restart=always
 User=redis
@@ -26,7 +26,7 @@ PrivateTmp=yes
 LimitNOFILE=65535
 PrivateDevices=yes
 ProtectHome=yes
-ReadWriteDirectories=-/var/lib/redis_{{ redis_name }}
+ReadWriteDirectories=-/var/lib/redis_{{ item.name }}
 ReadWriteDirectories=-/var/log/redis
 ReadWriteDirectories=-/var/run/redis
 CapabilityBoundingSet=~CAP_SYS_PTRACE
@@ -38,4 +38,4 @@ ReadWriteDirectories=-/etc/redis
 
 [Install]
 WantedBy=multi-user.target
-Alias=redis-{{ redis_name }}.service
+Alias=redis-{{ item.name }}.service

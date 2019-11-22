@@ -43,11 +43,11 @@ daemonize yes
 
 # When running daemonized, Redis writes a pid file in /var/run/redis.pid by
 # default. You can specify a custom pid file location here.
-pidfile /var/run/redis/redis-{{ redis_name }}.pid
+pidfile /var/run/redis/redis-{{ item.name }}.pid
 
 # Accept connections on the specified port, default is 6379.
 # If port 0 is specified Redis will not listen on a TCP socket.
-port {{ redis_port }}
+port {{ item.port }}
 # TCP listen() backlog.
 #
 # In high requests-per-second environments you need an high backlog in order
@@ -65,7 +65,7 @@ tcp-backlog 511
 # Examples:
 #
 # bind 192.168.1.100 10.0.0.1
-bind {{ redis_bind }}
+bind {{ item.bind }}
 
 # Specify the path for the Unix socket that will be used to listen for
 # incoming connections. There is no default, so Redis will not listen
@@ -103,7 +103,7 @@ loglevel notice
 # Specify the log file name. Also the empty string can be used to force
 # Redis to log on the standard output. Note that if you use standard
 # output for logging but daemonize, logs will be sent to /dev/null
-logfile /var/log/redis/redis-{{ redis_name }}.log
+logfile /var/log/redis/redis-{{ item.name }}.log
 
 # To enable logging to the system logger, just set 'syslog-enabled' to yes,
 # and optionally update the other syslog parameters to suit your needs.
@@ -139,7 +139,7 @@ databases 16
 #   It is also possible to remove all the previously configured save
 #   points by adding a save directive with a single empty string argument
 #   like in the following example:
-{% if redis_disable_disk_store is defined and redis_disable_disk_store is sameas true %}
+{% if item.disable_disk_store is defined and item.disable_disk_store is sameas true %}
 # save 900 1
 # save 300 10
 # save 60 10000
@@ -189,7 +189,7 @@ dbfilename dump.rdb
 #
 # The Append Only File will also be created inside this directory.
 # Note that you must specify a directory here, not a file name.
-dir /var/lib/redis_{{ redis_name }}
+dir /var/lib/redis_{{ item.name }}
 
 ################################# REPLICATION #################################
 

@@ -4,8 +4,4 @@
 
 
 - include: instance-config.yml
-  vars:
-    redis_port: "{{ item.port }}"
-    redis_name: "{{ item.name }}"
-    redis_bind: "{{ item.bind }}"
   with_items: "{{ redis_configs }}"

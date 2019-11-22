@@ -4,4 +4,4 @@ redis_configs:
   - port: 6380,
     name: "cache"
     bind: 127.0.0.1
-    redis_disable_disk_store: false
+    disable_disk_store: false

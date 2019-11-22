@@ -1,15 +1,15 @@
 ---
 - name: Copy service file template
-  template: src=service.j2 dest=/lib/systemd/system/redis-{{ redis_name }}.service
+  template: src=service.j2 dest=/lib/systemd/system/redis-{{ item.name }}.service
 
 - name: Copy redis config template
-  template: src=config.j2 dest=/etc/redis/redis-{{ redis_name }}.conf
+  template: src=config.j2 dest=/etc/redis/redis-{{ item.name }}.conf
 
 - name: Copy init.d file template
-  template: src=init.j2 dest=/etc/init.d/redis-{{ redis_name }} mode="u=rwx,g=rx,o=rx"
+  template: src=init.j2 dest=/etc/init.d/redis-{{ item.name }} mode="u=rwx,g=rx,o=rx"
 
 - name: Create the lib folder for the instance
-  file: path=/var/lib/redis_{{ redis_name }} state=directory owner=redis group=redis mode="g+rw,u+rw,o-rwx"
+  file: path=/var/lib/redis_{{ item.name }} state=directory owner=redis group=redis mode="g+rw,u+rw,o-rwx"
   notify:
     - Reload daemon
 
@@ -17,18 +17,18 @@
   meta: flush_handlers
 
 - name: Enable the custom redis service
-  service: name=redis-{{ redis_name }}.service enabled=true
+  service: name=redis-{{ item.name }}.service enabled=true
   when: is_docker is not defined
 
 # - name: Enable the custom redis service (docker)
-#  shell: systemctl enable redis-{{ redis_name }}.service
+#  shell: systemctl enable redis-{{ item.name }}.service
 #  when: is_docker is defined
 #  tags: skip_ansible_lint
 
 - name: Start the custom redis service
-  service: name=redis-{{ redis_name }}.service state=started
+  service: name=redis-{{ item.name }}.service state=started
   when: is_docker is not defined
 
 - name: Start the custom redis service (docker or non systemctl)
-  command: /etc/init.d/redis-{{ redis_name }} start creates=/var/run/redis/redis-{{ redis_name }}.pid
+  command: /etc/init.d/redis-{{ item.name }} start creates=/var/run/redis/redis-{{ item.name }}.pid
   when: is_docker is defined
