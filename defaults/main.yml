@@ -5,4 +5,4 @@ redis_configs:
     name: "cache"
     bind: 127.0.0.1
     disable_disk_store: false
-    replicaof: false
+    replicaof: false  # we're using the 5.x+ keyword, but the old SLAVEOF is being used in the end. TODO: make it smarter!
