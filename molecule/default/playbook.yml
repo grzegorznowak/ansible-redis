@@ -3,10 +3,10 @@
   hosts: all
   vars:
     redis_configs:
-      - port: 6379,
+      - port: 6379
         name: "cache0"
         bind: 127.0.0.1
-      - port: 6380,
+      - port: 6380
         name: "cache1"
         bind: 127.0.0.1
 

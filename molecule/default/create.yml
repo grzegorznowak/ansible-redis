@@ -9,11 +9,16 @@
       lxd_container:
         name: "{{ item.name }}"
         state: started
+        devices:
+          root:
+            path: "/"
+            type: "disk"
+            pool: "{{ lookup('env', 'POOL') | default('default', true) }}"
         source:
           type: image
           mode: pull
-          server: https://images.linuxcontainers.org
-          protocol: lxd
+          server: https://images.linuxcontainers.org/
+          protocol: simplestreams
           alias: "{{ item.image }}"
         profiles: ["default"]
         wait_for_ipv4_addresses: true

@@ -4,17 +4,19 @@
 
 - name: Copy redis config template
   template: src=config.j2 dest=/etc/redis/redis-{{ item.name }}.conf
+  notify: Restart Redis Services
 
 - name: Copy init.d file template
   template: src=init.j2 dest=/etc/init.d/redis-{{ item.name }} mode="u=rwx,g=rx,o=rx"
 
 - name: Create the lib folder for the instance
   file: path=/var/lib/redis_{{ item.name }} state=directory owner=redis group=redis mode="g+rw,u+rw,o-rwx"
-  notify:
-    - Reload daemon
+  register: systemctl_changed
 
-- name: Flush Handlers.
-  meta: flush_handlers
+# temporary evade issue https://github.com/ansible/ansible/issues/14270#issuecomment-416880078
+- systemd:
+    daemon_reload: true
+  when: systemctl_changed is defined and systemctl_changed.changed == True
 
 - name: Enable the custom redis service
   service: name=redis-{{ item.name }}.service enabled=true
