@@ -242,7 +242,12 @@ slave-serve-stale-data yes
 # such as CONFIG, DEBUG, and so forth. To a limited extent you can improve
 # security of read only slaves using 'rename-command' to shadow all the
 # administrative / dangerous commands.
+
+{% if item.replicaof_readonly is not defined or item.replicaof_readonly == true %}
 slave-read-only yes
+{% else %}
+slave-read-only no
+{% endif %}
 
 # Replication SYNC strategy: disk or socket.
 #
