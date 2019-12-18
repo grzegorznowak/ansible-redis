@@ -13,10 +13,12 @@
   file: path=/var/lib/redis_{{ item.name }} state=directory owner=redis group=redis mode="g+rw,u+rw,o-rwx"
   register: systemctl_changed
 
-# temporary evade issue https://github.com/ansible/ansible/issues/14270#issuecomment-416880078
-- systemd:
+- name: temporary evade issue https://github.com/ansible/ansible/issues/14270#issuecomment-416880078
+  systemd:
     daemon_reload: true
-  when: systemctl_changed is defined and systemctl_changed.changed == True
+  when: systemctl_changed is defined and systemctl_changed.changed
+  tags:
+    - skip_ansible_lint
 
 - name: Enable the custom redis service
   service: name=redis-{{ item.name }}.service enabled=true
