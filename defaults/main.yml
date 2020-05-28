@@ -7,3 +7,8 @@ redis_configs:
     disable_disk_store: false
     replicaof: false  # we're using the 5.x+ keyword, but the old SLAVEOF is being used in the end. TODO: make it smarter!
     replicaof_readonly: true  # by default we assume replicas are read-only, if this is not set explicitly to true
+    maxmemory: ""
+    # note redis' default for maxmemory-policy is to not evict keys. Which can yield errors in production if server OOMs
+    # This setting is less verbose, but safer as long as you treat Redis as key-value cache,
+    # which this particular config is exactly for, thus the decision to replace the redis's default value was made
+    maxmemory_policy: allkeys-lru
