@@ -6,6 +6,8 @@ driver:
 lint:
   name: yamllint
 platforms:
+  - name: ansible-redis-instance-20-04
+    image: ubuntu/focal/amd64
   - name: ansible-redis-instance-18-08
     image: ubuntu/bionic/amd64
   - name: ansible-redis-instance-16-04
