@@ -482,7 +482,7 @@ maxmemory {{ item.maxmemory }}
 #
 # maxmemory-policy noeviction
 {% if item.maxmemory_policy is defined and item.maxmemory_policy != false and item.maxmemory_policy != "" %}
-maxmemory_policy {{ item.maxmemory_policy }}
+maxmemory-policy {{ item.maxmemory_policy }}
 {% endif %}
 
 # LRU and minimal TTL algorithms are not precise algorithms but approximated
