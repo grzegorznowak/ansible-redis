@@ -401,7 +401,7 @@ slave-priority 100
 # requirepass foobared
 
 {% if item.password is defined and item.password != false and item.password != "" %}
-requirepass {{ password }}
+requirepass {{ item.password }}
 {% endif %}
 
 # Command renaming.
