@@ -400,6 +400,10 @@ slave-priority 100
 #
 # requirepass foobared
 
+{% if item.redis_password is defined and item.redis_password != false and item.redis_password != "" %}
+requirepass {{ redis_password }}
+{% endif %}
+
 # Command renaming.
 # It is possible to change the name of dangerous commands in a shared
 # environment. For instance the CONFIG command may be renamed into something
