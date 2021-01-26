@@ -400,8 +400,8 @@ slave-priority 100
 #
 # requirepass foobared
 
-{% if item.redis_password is defined and item.redis_password != false and item.redis_password != "" %}
-requirepass {{ redis_password }}
+{% if item.password is defined and item.password != false and item.password != "" %}
+requirepass {{ password }}
 {% endif %}
 
 # Command renaming.
