@@ -216,6 +216,10 @@ dir /var/lib/redis_{{ item.name }}
 #
 # masterauth <master-password>
 
+{% if item.password is defined and item.password != false and item.password != "" %}
+masterauth {{ item.password }}
+{% endif %}
+
 # When a slave loses its connection with the master, or when the replication
 # is still in progress, the slave can act in two different ways:
 #
