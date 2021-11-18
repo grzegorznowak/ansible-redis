@@ -3,7 +3,7 @@
   when: ansible_os_family == 'Debian'
 
 
-- include: instance-config.yml
+- include_tasks: instance-config.yml
   with_items: "{{ redis_configs }}"
 
 - name: Install sysfsutils for disabling transparent huge pages
